@@ -5,6 +5,6 @@
   "author": "Matt Toigo",
   "dependencies": {
     "express": "*",
-    "googleapis": "*",
+    "googleapis": "*"
   }
 }
