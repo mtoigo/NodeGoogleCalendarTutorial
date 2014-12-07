@@ -4,7 +4,7 @@
   "description": "A tutorial on pulling events from a google calendar.",
   "author": "Matt Toigo",
   "dependencies": {
-    "express": "*",
-    "googleapis": "*"
+    "express": "4.10.4",
+    "googleapis": "1.0.21"
   }
 }
