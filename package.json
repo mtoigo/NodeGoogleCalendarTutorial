@@ -1,0 +1,10 @@
+{
+  "name": "NodeGoogleCalendarTutorial",
+  "version": "0.0.1",
+  "description": "A tutorial on pulling events from a google calendar.",
+  "author": "Matt Toigo",
+  "dependencies": {
+    "express": "*",
+    "googleapis": "*",
+  }
+}
