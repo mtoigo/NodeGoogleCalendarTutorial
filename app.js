@@ -11,6 +11,7 @@ var express = require('express'),
   moment = require('moment'),
   google = require('googleapis');
 
+// Initialization
 var app = express(),
   calendar = google.calendar('v3');
   oAuthClient = new google.auth.OAuth2(googleConfig.clientID, googleConfig.clientSecret, googleConfig.redirectURL),
@@ -21,15 +22,19 @@ app.get('/', function(req, res) {
 
   // If we're not authenticated, fire off the OAuth flow
   if (!authed) {
+
+    // Generate an OAuth URL and redirect there
     var url = oAuthClient.generateAuthUrl({
       access_type: 'offline',
       scope: 'https://www.googleapis.com/auth/calendar.readonly'
     });
-
     res.redirect(url);
   } else {
+
+      // Format today's date
       var today = moment().format('YYYY-MM-DD') + 'T';
 
+      // Call google to fetch events for today on our calendar
       calendar.events.list({
         calendarId: googleConfig.calendarId,
         maxResults: 20,
@@ -41,6 +46,8 @@ app.get('/', function(req, res) {
           console.log('Error fetching events');
           console.log(err);
         } else {
+
+          // Send our JSON response back to the browser
           console.log('Successfully fetched events');
           res.send(events);
         }
@@ -54,6 +61,7 @@ app.get('/auth', function(req, res) {
     var code = req.param('code');
 
     if(code) {
+      // Get an access token based on our OAuth code
       oAuthClient.getToken(code, function(err, tokens) {
 
         if (err) {
@@ -63,6 +71,7 @@ app.get('/auth', function(req, res) {
           console.log('Successfully authenticated');
           console.log(tokens);
           
+          // Store our credentials are redirect back to our main page
           oAuthClient.setCredentials(tokens);
           authed = true;
           res.redirect('/');
