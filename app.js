@@ -55,7 +55,7 @@ app.get('/', function(req, res) {
   }
 });
 
-// Return point for oAuth flow, should match googleConfig.redirect_url
+// Return point for oAuth flow, should match googleConfig.redirectURL
 app.get('/auth', function(req, res) {
 
     var code = req.param('code');
