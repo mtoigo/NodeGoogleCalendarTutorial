@@ -5,6 +5,7 @@
   "author": "Matt Toigo",
   "dependencies": {
     "express": "4.10.4",
-    "googleapis": "1.0.21"
+    "googleapis": "1.0.21",
+    "moment": "2.8.4"
   }
 }
