@@ -71,7 +71,7 @@ app.get('/auth', function(req, res) {
           console.log('Successfully authenticated');
           console.log(tokens);
           
-          // Store our credentials are redirect back to our main page
+          // Store our credentials and redirect back to our main page
           oAuthClient.setCredentials(tokens);
           authed = true;
           res.redirect('/');
